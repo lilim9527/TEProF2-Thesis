@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "teprof3"
+version = "3.0.0"
+description = "TEProf2 v3 — TE Promoter Finder optimized for common ragweed (Ambrosia artemisiifolia)"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+
+dependencies = [
+    "pandas>=2.2.0",
+    "pysam>=0.22.0",
+    "typer>=0.9.0",
+    "rich>=13.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.scripts]
+teprof3 = "teprof3.cli.annotate:app"
+teprof3-aggregate = "teprof3.cli.aggregate:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
